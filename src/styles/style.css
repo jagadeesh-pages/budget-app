@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 30px;
+}
+
+.form-card, .chart-card, .table-card, .summary-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.form-card h2, .chart-card h2, .table-card h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.btn-primary, .btn-secondary, .btn-danger {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #4CAF50;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.btn-secondary:hover {
+    background: #45a049;
+}
+
+.btn-danger {
+    background: #f44336;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #da190b;
+}
+
+.actions {
+    margin: 20px 0;
+}
+
+.summary-card {
+    text-align: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.summary-card h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.total-amount {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.chart-card {
+    margin-bottom: 30px;
+}
+
+.chart-card canvas {
+    max-height: 400px;
+}
+
+.filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.filters select, .filters input {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.filters select:focus, .filters input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.filtered-total {
+    background: #f0f0f0;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #333;
+}
+
+.filtered-total span {
+    color: #667eea;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #f5f5f5;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+    font-weight: 600;
+    color: #555;
+}
+
+.delete-btn {
+    background: #f44336;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.delete-btn:hover {
+    background: #da190b;
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.category-Food { background: #FFE5B4; color: #FF8C00; }
+.category-Transport { background: #E0F2F7; color: #0288D1; }
+.category-Entertainment { background: #F3E5F5; color: #7B1FA2; }
+.category-Shopping { background: #FCE4EC; color: #C2185B; }
+.category-Bills { background: #FFF3E0; color: #F57C00; }
+.category-Health { background: #E8F5E9; color: #388E3C; }
+.category-Other { background: #ECEFF1; color: #546E7A; }
+
+@media (max-width: 1024px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+    
+    .form-card, .chart-card, .table-card, .summary-card {
+        padding: 20px;
+    }
+    
+    .total-amount {
+        font-size: 2em;
+    }
+}
