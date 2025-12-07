@@ -30,6 +30,7 @@ document.getElementById('expenseForm').addEventListener('submit', (e) => {
 });
 
 document.getElementById('filterCategory').addEventListener('change', updateTable);
+document.getElementById('filterPayment').addEventListener('change', updateTable);
 document.getElementById('filterProduct').addEventListener('input', updateTable);
 
 document.getElementById('exportBtn').addEventListener('click', exportToExcel);
@@ -53,12 +54,14 @@ function updateUI() {
 
 function updateTable() {
     const filterCat = document.getElementById('filterCategory').value;
+    const filterPay = document.getElementById('filterPayment').value;
     const filterProd = document.getElementById('filterProduct').value.toLowerCase();
     
     const filtered = expenses.filter(exp => {
         const matchCategory = !filterCat || exp.category === filterCat;
+        const matchPayment = !filterPay || exp.paymentMethod === filterPay;
         const matchProduct = !filterProd || exp.product.toLowerCase().includes(filterProd);
-        return matchCategory && matchProduct;
+        return matchCategory && matchPayment && matchProduct;
     });
     
     const tbody = document.getElementById('expenseBody');
@@ -191,27 +194,6 @@ function exportToExcel() {
     XLSX.utils.book_append_sheet(wb, ws, 'Expenses');
     
     XLSX.writeFile(wb, `Budget_${new Date().toISOString().split('T')[0]}.xlsx`);
-}
-
-// Add sample data if no expenses exist
-if (expenses.length === 0) {
-    expenses = [
-        { id: 1, amount: 45.50, category: 'Food', product: 'Grocery Shopping - Walmart', paymentMethod: 'Credit Card', date: '1/15/2024' },
-        { id: 2, amount: 12.99, category: 'Food', product: 'Pizza Delivery', paymentMethod: 'Bank', date: '1/16/2024' },
-        { id: 3, amount: 65.00, category: 'Transport', product: 'Gas Station Fill-up', paymentMethod: 'Credit Card', date: '1/16/2024' },
-        { id: 4, amount: 25.00, category: 'Transport', product: 'Uber Ride to Airport', paymentMethod: 'Bank', date: '1/17/2024' },
-        { id: 5, amount: 89.99, category: 'Entertainment', product: 'Concert Tickets', paymentMethod: 'Credit Card', date: '1/17/2024' },
-        { id: 6, amount: 15.50, category: 'Entertainment', product: 'Movie Theater', paymentMethod: 'Bank', date: '1/18/2024' },
-        { id: 7, amount: 120.00, category: 'Shopping', product: 'Nike Shoes', paymentMethod: 'Credit Card', date: '1/18/2024' },
-        { id: 8, amount: 35.75, category: 'Shopping', product: 'Amazon Order - Books', paymentMethod: 'Bank', date: '1/19/2024' },
-        { id: 9, amount: 150.00, category: 'Bills', product: 'Electric Bill', paymentMethod: 'Bank', date: '1/19/2024' },
-        { id: 10, amount: 80.00, category: 'Bills', product: 'Internet Service', paymentMethod: 'Credit Card', date: '1/20/2024' },
-        { id: 11, amount: 45.00, category: 'Health', product: 'Pharmacy - Prescription', paymentMethod: 'Bank', date: '1/20/2024' },
-        { id: 12, amount: 200.00, category: 'Health', product: 'Dental Checkup', paymentMethod: 'Credit Card', date: '1/21/2024' },
-        { id: 13, amount: 28.50, category: 'Food', product: 'Restaurant - Dinner', paymentMethod: 'Credit Card', date: '1/21/2024' },
-        { id: 14, amount: 50.00, category: 'Other', product: 'Gift for Friend', paymentMethod: 'Bank', date: '1/22/2024' }
-    ];
-    saveExpenses();
 }
 
 updateUI();
