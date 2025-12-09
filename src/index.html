@@ -16,6 +16,23 @@
             <div class="left-panel">
                 <div class="form-card">
                     <h2>Add Expense</h2>
+                    <div class="form-date-selector">
+                        <select id="expenseMonth">
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                        <select id="expenseYear"></select>
+                    </div>
                     <form id="expenseForm">
                         <div class="form-group">
                             <label>Amount (₹)</label>
@@ -43,7 +60,11 @@
                             <select id="paymentMethod" required>
                                 <option value="">Select Payment Method</option>
                                 <option value="Bank">Bank</option>
-                                <option value="Credit Card">Credit Card</option>
+                                <option value="RBL">RBL</option>
+                                <option value="RBLRUPAY">RBLRUPAY</option>
+                                <option value="HDFC">HDFC</option>
+                                <option value="KOTAK">KOTAK</option>
+                                <option value="TATA">TATA</option>
                             </select>
                         </div>
                         <button type="submit" class="btn-primary">Save Expense</button>
@@ -52,6 +73,8 @@
 
                 <div class="actions">
                     <button id="exportBtn" class="btn-secondary">📊 Export to Excel</button>
+                    <button id="importBtn" class="btn-secondary">📥 Import from Excel</button>
+                    <input type="file" id="importFile" accept=".xlsx,.xls" style="display:none;">
                     <button id="clearBtn" class="btn-danger">🗑️ Clear All Data</button>
                 </div>
 
@@ -64,11 +87,38 @@
             <div class="right-panel">
                 <div class="chart-card">
                     <h2>Spending by Category</h2>
+                    <div class="chart-filters">
+                        <label>View by:</label>
+                        <select id="chartViewType">
+                            <option value="category">Category</option>
+                            <option value="payment">Payment Method</option>
+                        </select>
+                    </div>
                     <canvas id="expenseChart"></canvas>
                 </div>
 
                 <div class="table-card">
                     <h2>Recent Expenses</h2>
+                    <div class="date-filters">
+                        <select id="filterMonth">
+                            <option value="">All Months</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                        <select id="filterYear">
+                            <option value="">All Years</option>
+                        </select>
+                    </div>
                     <div class="filters">
                         <select id="filterCategory">
                             <option value="">All Categories</option>
@@ -83,7 +133,11 @@
                         <select id="filterPayment">
                             <option value="">All Payment Methods</option>
                             <option value="Bank">Bank</option>
-                            <option value="Credit Card">Credit Card</option>
+                            <option value="RBL">RBL</option>
+                            <option value="RBLRUPAY">RBLRUPAY</option>
+                            <option value="HDFC">HDFC</option>
+                            <option value="KOTAK">KOTAK</option>
+                            <option value="TATA">TATA</option>
                         </select>
                         <input type="text" id="filterProduct" placeholder="Search product...">
                     </div>
