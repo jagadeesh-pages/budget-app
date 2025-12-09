@@ -72,13 +72,10 @@
                 </div>
 
                 <div class="actions">
-                    <button id="driveBackupBtn" class="btn-secondary">☁️ Backup to Drive</button>
-                    <button id="driveRestoreBtn" class="btn-secondary">📥 Restore from Drive</button>
                     <button id="exportBtn" class="btn-secondary">📊 Export to Excel</button>
-                    <button id="importBtn" class="btn-secondary">📂 Import from Excel</button>
+                    <button id="importBtn" class="btn-secondary">📥 Import from Excel</button>
                     <input type="file" id="importFile" accept=".xlsx,.xls" style="display:none;">
                     <button id="clearBtn" class="btn-danger">🗑️ Clear All Data</button>
-                    <div id="driveStatus" style="font-size: 12px; color: #666; margin-top: 10px; text-align: center;"></div>
                 </div>
 
                 <div class="summary-card">
@@ -168,8 +165,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="https://apis.google.com/js/api.js"></script>
     <script src="index.js"></script>
 </body>
 </html>

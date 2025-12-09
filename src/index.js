@@ -119,6 +119,25 @@ document.getElementById('clearBtn').addEventListener('click', () => {
 
 function saveExpenses() {
     localStorage.setItem('expenses', JSON.stringify(expenses));
+    autoBackup();
+}
+
+function autoBackup() {
+    const data = {
+        expenses: expenses,
+        timestamp: new Date().toISOString(),
+        version: '1.0'
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `budget-backup-${new Date().toISOString().split('T')[0]}.json`;
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
 }
 
 function updateUI() {
