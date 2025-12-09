@@ -44,6 +44,21 @@ setInterval(() => {
     }
 }, 60000); // Check every minute
 
+// Sync form month/year with filter month/year
+document.getElementById('expenseMonth').addEventListener('change', () => {
+    document.getElementById('filterMonth').value = document.getElementById('expenseMonth').value;
+    updateTable();
+    updateChart();
+    updateTotal();
+});
+
+document.getElementById('expenseYear').addEventListener('change', () => {
+    document.getElementById('filterYear').value = document.getElementById('expenseYear').value;
+    updateTable();
+    updateChart();
+    updateTotal();
+});
+
 document.getElementById('expenseForm').addEventListener('submit', (e) => {
     e.preventDefault();
     
