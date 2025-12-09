@@ -104,6 +104,22 @@ function populateYears() {
 
 populateYears();
 
+document.getElementById('driveBackupBtn').addEventListener('click', () => {
+    if (typeof backupToDrive === 'function') {
+        backupToDrive();
+    } else {
+        alert('Google Drive is loading. Please wait a moment and try again.');
+    }
+});
+
+document.getElementById('driveRestoreBtn').addEventListener('click', () => {
+    if (typeof restoreFromDrive === 'function') {
+        restoreFromDrive();
+    } else {
+        alert('Google Drive is loading. Please wait a moment and try again.');
+    }
+});
+
 document.getElementById('exportBtn').addEventListener('click', exportToExcel);
 document.getElementById('importBtn').addEventListener('click', () => {
     document.getElementById('importFile').click();
